@@ -8,6 +8,7 @@ currentJack = 0
 currentJill = 0
 jacks = {}
 canSell = 0
+lastJack = 0
 
 while(1):
 
@@ -29,7 +30,9 @@ while(1):
             currentJack+=1
         elif(currentJill < jill):
             currentJill+=1
-            if(line in jacks):
-                canSell+=1
+            
+            for(x in range(0,len(jacks)))
+                if(jacks[x] == line)                
+                    canSell+=1
         if(currentJack == jack and currentJill == jill): 
             print(canSell)
