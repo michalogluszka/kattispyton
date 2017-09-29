@@ -6,9 +6,9 @@ file = open("A.0.in")
 
 currentJack = 0
 currentJill = 0
-jacks = {}
+jacks = []
 canSell = 0
-lastJack = 0
+nextJack = 0
 
 while(1):
 
@@ -22,17 +22,27 @@ while(1):
         jill = int(line[2])            
         currentJack = 0
         currentJill = 0
-        jacks = {}
+        jacks = []
         canSell = 0
+        nextJack = 0
     else:         
         if(currentJack < jack):
-            jacks[line] = 1    
+            jacks.append(line)    
             currentJack+=1
         elif(currentJill < jill):
-            currentJill+=1
+            currentJill+=1            
             
-            for(x in range(0,len(jacks)))
-                if(jacks[x] == line)                
-                    canSell+=1
+            ticker = nextJack
+            for x in range(ticker,len(jacks)):                                
+                if int(line) == int(jacks[x]):           
+                    canSell+=1                
+                    nextJack=x+1
+                    break                
+                elif int(line) > int(jacks[x]):
+                    nextJack = x+1  
+                    break;                 
+                else:                    
+                    break;                
+
         if(currentJack == jack and currentJill == jill): 
             print(canSell)
