@@ -39,8 +39,7 @@ while(1):
                     nextJack=x+1
                     break                
                 elif int(line) > int(jacks[x]):
-                    nextJack = x+1  
-                    break;                 
+                    nextJack = x+1                                    
                 else:                    
                     break;                
 
