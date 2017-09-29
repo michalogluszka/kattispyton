@@ -1,12 +1,35 @@
 import sys
 # for tests
-#file = open("1.in") 
+file = open("A.0.in") 
 # for submission
-file = sys.stdin
+#file = sys.stdin
 
-data = file.read().splitlines()
+currentJack = 0
+currentJill = 0
+jacks = {}
+canSell = 0
 
-numberOfRows = int(data[0])
+while(1):
 
-for i in range(1,numberOfRows+1):
-    line = data[i].split(' ')
+    
+    line = file.readline().rstrip('\n')
+    
+    if(line == '0 0'):
+        break
+    elif(len(line.split(' '))==2):    
+        jack = int(line[0])
+        jill = int(line[2])            
+        currentJack = 0
+        currentJill = 0
+        jacks = {}
+        canSell = 0
+    else:         
+        if(currentJack < jack):
+            jacks[line] = 1    
+            currentJack+=1
+        elif(currentJill < jill):
+            currentJill+=1
+            if(line in jacks):
+                canSell+=1
+        if(currentJack == jack and currentJill == jill): 
+            print(canSell)
