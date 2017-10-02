@@ -1,6 +1,6 @@
 import sys
 # for tests
-#file = open("1.in") 
+file = open("character-01.in") 
 # for submission
 file = sys.stdin
 
