@@ -1,47 +1,50 @@
+# pylint: disable=invalid-name
 import sys
+
 # for tests
-file = open("A.0.in") 
+# file = open("A.0.in")
 # for submission
-#file = sys.stdin
+file = sys.stdin
 
-currentJack = 0
-currentJill = 0
-jacks = []
-canSell = 0
-nextJack = 0
+data = file.read().splitlines()
 
-while(1):
+counter = 0
 
+while 1:
+    line = data[counter].split(" ")
+
+    canSell = 0
     
-    line = file.readline().rstrip('\n')
+    N = int(line[0])    
+    M = int(line[1])
     
-    if(line == '0 0'):
+    if(N==0 and M==0):
         break
-    elif(len(line.split(' '))==2):    
-        jack = int(line[0])
-        jill = int(line[2])            
-        currentJack = 0
-        currentJill = 0
-        jacks = []
-        canSell = 0
-        nextJack = 0
-    else:         
-        if(currentJack < jack):
-            jacks.append(line)    
-            currentJack+=1
-        elif(currentJill < jill):
-            currentJill+=1            
-            
-            ticker = nextJack
-            for x in range(ticker,len(jacks)):                                
-                if int(line) == int(jacks[x]):           
-                    canSell+=1                
-                    nextJack=x+1
-                    break                
-                elif int(line) > int(jacks[x]):
-                    nextJack = x+1                                    
-                else:                    
-                    break;                
 
-        if(currentJack == jack and currentJill == jill): 
-            print(canSell)
+    counter += 1
+
+    jacks = []
+    jills = []
+
+    for i in range(counter, N + counter):
+        jacks.append(int(data[i]))
+        counter += 1
+
+    for i in range(counter, M + counter):
+        jills.append(int(data[i]))
+        counter += 1
+
+    i_n = 0
+    i_m = 0
+
+    while(i_n < N and i_m < M):
+        if jacks[i_n] < jills[i_m]:
+            i_n += 1
+        elif jacks[i_n] > jills[i_m]:
+            i_m += 1
+        else:
+            i_n += 1
+            i_m += 1
+            canSell += 1
+
+    print(canSell)
