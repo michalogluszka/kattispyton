@@ -1,12 +1,13 @@
 import sys
 # for tests
-file = open("character-01.in") 
+file = open("datum.1.in") 
 # for submission
-file = sys.stdin
+# file = sys.stdin
 
-data = file.read().splitlines()
+data = file.readline().strip('\n').split(' ')
 
-numberOfRows = int(data[0])
+print(data)
 
-for i in range(1,numberOfRows+1):
-    line = data[i].split(' ')
+D = data[0]
+M = data[1]
+
